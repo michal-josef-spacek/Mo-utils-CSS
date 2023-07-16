@@ -21,6 +21,7 @@ meta-spec:
 name: Mo-utils-CSS
 no_index:
   directory:
+    - examples
     - inc
     - t
     - xt
