@@ -8,13 +8,13 @@ use Error::Pure qw(err);
 use List::Util qw(none);
 use Readonly;
 
-Readonly::Array our @EXPORT_OK => qw(check_unit);
+Readonly::Array our @EXPORT_OK => qw(check_css_unit);
 Readonly::Array our @ABSOLUTE_LENGTHS => qw(cm mm in px pt pc);
 Readonly::Array our @RELATIVE_LENGTHS => qw(em ex ch rem vw vh vmin vmax %);
 
 our $VERSION = 0.01;
 
-sub check_unit {
+sub check_css_unit {
 	my ($self, $key) = @_;
 
 	_check_key($self, $key) && return;
@@ -59,9 +59,9 @@ Mo::utils::CSS - Mo CSS utilities.
 
 =head1 SYNOPSIS
 
- use Mo::utils::CSS qw(check_ean);
+ use Mo::utils::CSS qw(check_css_unit);
 
- check_unit($self, $key);
+ check_css_unit($self, $key);
 
 =head1 DESCRIPTION
 
@@ -69,9 +69,9 @@ Mo utilities for checking of CSS style things.
 
 =head1 SUBROUTINES
 
-=head2 C<check_unit>
+=head2 C<check_css_unit>
 
- check_unit($self, $key);
+ check_css_unit($self, $key);
 
 Check parameter defined by C<$key> if it's CSS unit.
 Value could be undefined.
@@ -80,7 +80,7 @@ Returns undef.
 
 =head1 ERRORS
 
- check_unit():
+ check_css_unit():
          Parameter '%s' doesn't contain number.
          Parameter '%s' doesn't contain unit.
          Parameter '%s' contain bad unit.
@@ -88,17 +88,17 @@ Returns undef.
 
 =head1 EXAMPLE1
 
-=for comment filename=check_unit_ok.pl
+=for comment filename=check_css_unit_ok.pl
 
  use strict;
  use warnings;
 
- use Mo::utils::CSS qw(check_unit);
+ use Mo::utils::CSS qw(check_css_unit);
 
  my $self = {
          'key' => '123px',
  };
- check_unit($self, 'key');
+ check_css_unit($self, 'key');
 
  # Print out.
  print "ok\n";
@@ -108,20 +108,20 @@ Returns undef.
 
 =head1 EXAMPLE2
 
-=for comment filename=check_unit_fail.pl
+=for comment filename=check_css_unit_fail.pl
 
  use strict;
  use warnings;
 
  use Error::Pure;
- use Mo::utils::CSS qw(check_unit);
+ use Mo::utils::CSS qw(check_css_unit);
 
  $Error::Pure::TYPE = 'Error';
 
  my $self = {
          'key' => '12',
  };
- check_unit($self, 'key');
+ check_css_unit($self, 'key');
 
  # Print out.
  print "ok\n";

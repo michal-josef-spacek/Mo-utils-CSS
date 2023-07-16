@@ -1,7 +1,7 @@
 Changes
 CSS.pm
-examples/check_unit_fail.pl
-examples/check_unit_ok.pl
+examples/check_css_unit_fail.pl
+examples/check_css_unit_ok.pl
 inc/Module/Install.pm
 inc/Module/Install/AuthorRequires.pm
 inc/Module/Install/AuthorTests.pm
@@ -20,6 +20,6 @@ META.yml
 README
 t/Mo-utils-CSS/01-use.t
 t/Mo-utils-CSS/02-version.t
-t/Mo-utils-CSS/03-check_unit.t
+t/Mo-utils-CSS/03-check_css_unit.t
 xt/Mo-utils-CSS/01-pod_coverage.t
 xt/Mo-utils-CSS/02-pod.t

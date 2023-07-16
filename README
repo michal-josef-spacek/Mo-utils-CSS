@@ -2,36 +2,39 @@ NAME
     Mo::utils::CSS - Mo CSS utilities.
 
 SYNOPSIS
-     use Mo::utils::CSS qw(check_ean);
+     use Mo::utils::CSS qw(check_css_unit);
 
-     check_unit($self, $key);
+     check_css_unit($self, $key);
 
 DESCRIPTION
     Mo utilities for checking of CSS style things.
 
 SUBROUTINES
-  "check_ean"
-     check_ean($self, $key);
+  "check_css_unit"
+     check_css_unit($self, $key);
 
-    Check parameter defined by $key if it's EAN code. Value could be
+    Check parameter defined by $key if it's CSS unit. Value could be
     undefined.
 
     Returns undef.
 
 ERRORS
-     check_unit():
-             TODO
+     check_css_unit():
+             Parameter '%s' doesn't contain number.
+             Parameter '%s' doesn't contain unit.
+             Parameter '%s' contain bad unit.
+                     Value: %s
 
 EXAMPLE1
      use strict;
      use warnings;
 
-     use Mo::utils::CSS qw(check_unit);
+     use Mo::utils::CSS qw(check_css_unit);
 
      my $self = {
-             'key' => 'en',
+             'key' => '123px',
      };
-     check_ean($self, '8590786020177');
+     check_css_unit($self, 'key');
 
      # Print out.
      print "ok\n";
@@ -44,14 +47,14 @@ EXAMPLE2
      use warnings;
 
      use Error::Pure;
-     use Mo::utils::EAN qw(check_ean);
+     use Mo::utils::CSS qw(check_css_unit);
 
      $Error::Pure::TYPE = 'Error';
 
      my $self = {
              'key' => '12',
      };
-     check_unit($self, 'key');
+     check_css_unit($self, 'key');
 
      # Print out.
      print "ok\n";
@@ -60,7 +63,7 @@ EXAMPLE2
      # #Error [...utils.pm:?] EAN code doesn't valid.
 
 DEPENDENCIES
-    Business::Barcode::EAN13, Error::Pure, Exporter, Readonly.
+    Error::Pure, Exporter, List::Util, Readonly.
 
 SEE ALSO
     Mo  Micro Objects. Mo is less.
