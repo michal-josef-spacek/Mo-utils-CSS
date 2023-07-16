@@ -17,4 +17,4 @@ check_css_unit($self, 'key');
 print "ok\n";
 
 # Output like:
-# #Error [...utils.pm:?] EAN code doesn't valid.
+# #Error [...utils.pm:?] Parameter 'key' doesn't contain unit.

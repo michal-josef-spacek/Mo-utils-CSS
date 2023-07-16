@@ -127,7 +127,7 @@ Returns undef.
  print "ok\n";
 
  # Output like:
- # #Error [...utils.pm:?] EAN code doesn't valid.
+ # #Error [...utils.pm:?] Parameter 'key' doesn't contain unit.
 
 =head1 DEPENDENCIES
 
