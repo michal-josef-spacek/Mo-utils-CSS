@@ -14,7 +14,7 @@ Readonly::Array our @ABSOLUTE_LENGTHS => qw(cm mm in px pt pc);
 Readonly::Array our @RELATIVE_LENGTHS => qw(em ex ch rem vw vh vmin vmax %);
 Readonly::Array our @COLOR_FUNC => qw(rgb rgba hsl hsla);
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 sub check_css_color {
 	my ($self, $key) = @_;
@@ -379,6 +379,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.01
+0.02
 
 =cut
