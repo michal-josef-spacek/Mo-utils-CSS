@@ -20,6 +20,7 @@ readme_from 'CSS.pm';
 recursive_author_tests('xt');
 requires 'Error::Pure' => 0.15;
 requires 'Exporter' => 0;
+requires 'Graphics::ColorNames::CSS' => 0;
 requires 'List::Util' => 1.33;
 requires 'Readonly' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Mo-utils-CSS/issues',

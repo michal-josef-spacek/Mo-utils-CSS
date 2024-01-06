@@ -1,5 +1,7 @@
 Changes
 CSS.pm
+examples/check_css_color_fail.pl
+examples/check_css_color_ok.pl
 examples/check_css_unit_fail.pl
 examples/check_css_unit_ok.pl
 inc/Module/Install.pm
@@ -21,5 +23,6 @@ README
 t/Mo-utils-CSS/01-use.t
 t/Mo-utils-CSS/02-version.t
 t/Mo-utils-CSS/03-check_css_unit.t
+t/Mo-utils-CSS/04-check_css_color.t
 xt/Mo-utils-CSS/01-pod_coverage.t
 xt/Mo-utils-CSS/02-pod.t

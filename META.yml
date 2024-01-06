@@ -28,6 +28,7 @@ no_index:
 requires:
   Error::Pure: 0.15
   Exporter: 0
+  Graphics::ColorNames::CSS: 0
   List::Util: 1.33
   Readonly: 0
   perl: 5.6.2
