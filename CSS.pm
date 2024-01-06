@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Error::Pure qw(err);
-use List::Util qw(none);
+use List::Util 1.33 qw(none);
 use Readonly;
 
 Readonly::Array our @EXPORT_OK => qw(check_css_unit);
