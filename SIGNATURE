@@ -1,0 +1,60 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.87.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: RIPEMD160
+
+SHA256 5338b8d1261cc81527cd083be4ce654bb33077849c692136b18fe1298e716bbc CSS.pm
+SHA256 e4dbfbd3f0f9cc5a576f3a10ff673d6aa719440e0932f4eefa12057e754ec588 Changes
+SHA256 d53de1de5e97aadb5bffa1eb84038b24a8c916622c44a16e0239d4cdafbe2df2 LICENSE
+SHA256 8f57323293710dac5095d157dc7f0c5826fb1ced506f6d9c02ed2ecacda4bad3 MANIFEST
+SHA256 3701ea46ae2bc06d609c865cb3d885612122fad0912f5c24d8cfa7576d6bee77 META.yml
+SHA256 2a854ec585a878a8e880bbd5ce1e00307050adfc824b5233c1e61f9eda7111c5 Makefile.PL
+SHA256 d5f67bc2aaf93da162092bb025091c1dcca6b7903ae7cc1a01472988c762fe3f README
+SHA256 77c9aede38d5f7cc0ef2994fbce88395e4a56e2375efdae070b4032a0036c1c4 examples/check_css_color_fail.pl
+SHA256 295b73dd736efe796d7819dedc8b98614467ca1bed3159506b4cad5953260eaa examples/check_css_color_ok.pl
+SHA256 e82c9ec1de16e2a1a34620edb2e51e5b703276ef56729256e530ff25e936cd9d examples/check_css_unit_fail.pl
+SHA256 1b7cfee7ef51268d7cd4e6d5ff75db2d68b98748de17323dc03811a813c49014 examples/check_css_unit_ok.pl
+SHA256 cd5397bbe618f5bbd4e12a33b0cf5d21114e771c2dbd0ce28e2135beb52c35a8 inc/Module/Install.pm
+SHA256 8bd506c33fb78f10f6451413e931ca23541fcc4eebe05fcb7c7c9577341223c4 inc/Module/Install/AuthorRequires.pm
+SHA256 1b5430a46a35142ef8914d8c745196fca825defc9dfa7e389299bf294613825e inc/Module/Install/AuthorTests.pm
+SHA256 798836f9ccb8d204b1be31fc3835631f57e9d818b21a8f0d14bfcfb82ff4a72a inc/Module/Install/Base.pm
+SHA256 d64cd4c16f83c5baf11f64a44bea3a0abc060a49da5aba040f0eb01394bf75ab inc/Module/Install/Can.pm
+SHA256 65d7a6098bf3f829e8c1c2865476d3537aa6f0ad0ffc9149e10812c856529043 inc/Module/Install/Fetch.pm
+SHA256 70c4b77acab3ff51dfb318110369607cb109e1c319459249623b787cf3859750 inc/Module/Install/Makefile.pm
+SHA256 14556386168007ce913e669fc08a332ccdb6140246fd55a90c879b5190c1b57a inc/Module/Install/Metadata.pm
+SHA256 53825bc78e4c910b888160bc148c8bc211be58e02b99c8edcbf4854f95faa049 inc/Module/Install/ReadmeFromPod.pm
+SHA256 4c746c02c5cc19bed4c352e76205b4adff4c45ce8310d71294e1b83c059659c2 inc/Module/Install/Win32.pm
+SHA256 d3d9b4583243c470ae895defa4c44564485b53693cba1c50ab0320768f443e97 inc/Module/Install/WriteAll.pm
+SHA256 57d1e771b8d0bc012d25412bec14072ce30bbd4846485b6c669b81a465b5a00d t/Mo-utils-CSS/01-use.t
+SHA256 dd7d857b8d2a8ee75c03ca2e804e06ffd0018f712fd4f22fce94687ebdc128e3 t/Mo-utils-CSS/02-version.t
+SHA256 a68c825a8ecc2ba90b21b2ad1b7873468c06e65de2d25dde208f558a30b232ca t/Mo-utils-CSS/03-check_css_unit.t
+SHA256 929ca1ea0652104911cc7d1aaabcd6deea3d047a2025813763f7dfee3c252fad t/Mo-utils-CSS/04-check_css_color.t
+SHA256 f2217bb6fe8c8d3da55683a9a9b48af6e2891e5e9a5d938db87e8c09acc17673 xt/Mo-utils-CSS/01-pod_coverage.t
+SHA256 5e6fe00f32290423ec7a4066f9dccdca89dcb417599b1b894a520dbfd1503da0 xt/Mo-utils-CSS/02-pod.t
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBAwAdFiEEbEiOwSagsghKcON6ojV9Rpe/B8sFAmWZadYACgkQojV9Rpe/
+B8tVhA/9FEZ3trpRjUlXmwjn1KsFcFkoLQlKlW7dUMyuPdRNq8ifE/whhAKaXbgC
+GnqsxXwVgsTY/tpbauLBCLyeGCb8mmv4GMevwgRPr+l5m0PfPZSFQ/LT5nGQiE1V
+g4596g0G3d/vKh/7KnpcS+GVMfH1rLaHQti+hej8YnQQ+GXLKp6tlZGJ+Y1Dmu0S
+PIIyjcq/Y9yJWTDBGwhSuswNt9lGXLH+Mb6fOuLJ2st2wzj15alLZ8R3XmrfQHql
+p+5iMNcUr8RGjPp2BJGn2rQIiZEnw2uIA9xys61G0g1F8vQjlZwh7rVe0hZQj/Lj
+ue21CxDZOXlChdq2deNc7QdBBvkyXjSNROaYJzv80gu/kZkXG/cNpLQXQWgoZmQt
+e1zERzN1ZrwOKWedplAraoPW7Pa87xXULikaDst2CrWe6GhctC8AYUSPmeZuOyEJ
+BPQd5ddKkUrTVQQpqP0A14l4UpRCKvYhV6ub8FAcgVexuPl7D+QxM4AwSzGODBbc
+0DDIqkixunB1ocBd1bttHmQ4NkLG8619OWtPwIvlYtCnascOJPRNUd+Z6TZxr1Od
+RYkq5K71Ku2/Scwv+CAoR2X6rJx+dPv058wpEm+tIDZXxY2W3dFlKomsdvyL9Ex5
+OfAK48WvnFPB6/eEIg8IOGVd4PIirXaw0KXI1yFNdgZ2i70FX10=
+=mIxe
+-----END PGP SIGNATURE-----
