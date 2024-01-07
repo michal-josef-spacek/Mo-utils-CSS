@@ -1,4 +1,4 @@
-0.03
+0.03 2024-01-07T23:09:07+01:00
  - Add check_array_css_color().
  - Fix SYNOPSIS section in doc.
  - Improve subroutines doc.
