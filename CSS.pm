@@ -226,7 +226,7 @@ Mo::utils::CSS - Mo CSS utilities.
 
 =head1 SYNOPSIS
 
- use Mo::utils::CSS qw(check_css_color check_css_unit);
+ use Mo::utils::CSS qw(check_css_class check_css_color check_css_unit);
 
  check_css_class($self, $key);
  check_css_color($self, $key);

@@ -1,4 +1,5 @@
 0.03
+ - Fix SYNOPSIS section in doc.
  - Regen example file.
  - Rewrite check_css_color() to better helpers.
 
