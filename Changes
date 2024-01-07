@@ -1,5 +1,6 @@
 0.03
  - Regen example file.
+ - Rewrite check_css_color() to better helpers.
 
 0.02 2024-01-06T18:50:41+01:00
  - Add check_css_class().

@@ -39,64 +39,7 @@ sub check_css_color {
 
 	_check_key($self, $key) && return;
 
-	my $funcs = join '|', @COLOR_FUNC;
-	if ($self->{$key} =~ m/^#(.*)$/ms) {
-		my $rgb = $1;
-		if (length $rgb == 3 || length $rgb == 6 || length $rgb == 8) {
-			if ($rgb !~ m/^[0-9A-Fa-f]+$/ms) {
-				err "Parameter '$key' has bad rgb color (bad hex number).",
-					'Value', $self->{$key},
-				;
-			}
-		} else {
-			err "Parameter '$key' has bad rgb color (bad length).",
-				'Value', $self->{$key},
-			;
-		}
-	} elsif ($self->{$key} =~ m/^($funcs)\((.*)\)$/ms) {
-		my $func = $1;
-		my $args_string = $2;
-		my @args = split m/\s*,\s*/ms, $args_string;
-		if ($func eq 'rgb') {
-			if (@args != 3) {
-				err "Parameter '$key' has bad rgb color (bad number of arguments).",
-					'Value', $self->{$key},
-				;
-			}
-			_check_colors($self, $key, \@args, $func);
-		} elsif ($func eq 'rgba') {
-			if (@args != 4) {
-				err "Parameter '$key' has bad rgba color (bad number of arguments).",
-					'Value', $self->{$key},
-				;
-			}
-			_check_colors($self, $key, \@args, $func);
-			_check_alpha($self, $key, \@args, $func);
-		} elsif ($func eq 'hsl') {
-			if (@args != 3) {
-				err "Parameter '$key' has bad hsl color (bad number of arguments).",
-					'Value', $self->{$key},
-				;
-			}
-			_check_degree($self, $key, \@args, $func);
-			_check_percent($self, $key, \@args, $func);
-		} else {
-			if (@args != 4) {
-				err "Parameter '$key' has bad hsla color (bad number of arguments).",
-					'Value', $self->{$key},
-				;
-			}
-			_check_degree($self, $key, \@args, $func);
-			_check_percent($self, $key, \@args, $func);
-			_check_alpha($self, $key, \@args, $func);
-		}
-	} else {
-		if (none { $self->{$key} eq $_ } keys %{Graphics::ColorNames::CSS->NamesRgbTable}) {
-			err "Parameter '$key' has bad color name.",
-				'Value', $self->{$key},
-			;
-		}
-	}
+	_check_color($self->{$key}, $key);
 
 	return;
 }
@@ -123,25 +66,90 @@ sub check_css_unit {
 }
 
 sub _check_alpha {
-	my ($self, $key, $args_ar, $func) = @_;
+	my ($value, $key, $args_ar, $func) = @_;
 
 	my $alpha = $args_ar->[3];
 	if ($alpha !~ m/^[\d\.]+$/ms || $alpha > 1) {
 		err "Parameter '$key' has bad $func alpha.",
-			'Value', $self->{$key},
+			'Value', $value,
 		;
 	}
 
 	return;
 }
 
+sub _check_color {
+	my ($value, $key) = @_;
+
+	my $funcs = join '|', @COLOR_FUNC;
+	if ($value =~ m/^#(.*)$/ms) {
+		my $rgb = $1;
+		if (length $rgb == 3 || length $rgb == 6 || length $rgb == 8) {
+			if ($rgb !~ m/^[0-9A-Fa-f]+$/ms) {
+				err "Parameter '$key' has bad rgb color (bad hex number).",
+					'Value', $value,
+				;
+			}
+		} else {
+			err "Parameter '$key' has bad rgb color (bad length).",
+				'Value', $value,
+			;
+		}
+	} elsif ($value =~ m/^($funcs)\((.*)\)$/ms) {
+		my $func = $1;
+		my $args_string = $2;
+		my @args = split m/\s*,\s*/ms, $args_string;
+		if ($func eq 'rgb') {
+			if (@args != 3) {
+				err "Parameter '$key' has bad rgb color (bad number of arguments).",
+					'Value', $value,
+				;
+			}
+			_check_colors($value, $key, \@args, $func);
+		} elsif ($func eq 'rgba') {
+			if (@args != 4) {
+				err "Parameter '$key' has bad rgba color (bad number of arguments).",
+					'Value', $value,
+				;
+			}
+			_check_colors($value, $key, \@args, $func);
+			_check_alpha($value, $key, \@args, $func);
+		} elsif ($func eq 'hsl') {
+			if (@args != 3) {
+				err "Parameter '$key' has bad hsl color (bad number of arguments).",
+					'Value', $value,
+				;
+			}
+			_check_degree($value, $key, \@args, $func);
+			_check_percent($value, $key, \@args, $func);
+		} else {
+			if (@args != 4) {
+				err "Parameter '$key' has bad hsla color (bad number of arguments).",
+					'Value', $value,
+				;
+			}
+			_check_degree($value, $key, \@args, $func);
+			_check_percent($value, $key, \@args, $func);
+			_check_alpha($value, $key, \@args, $func);
+		}
+	} else {
+		if (none { $value eq $_ } keys %{Graphics::ColorNames::CSS->NamesRgbTable}) {
+			err "Parameter '$key' has bad color name.",
+				'Value', $value,
+			;
+		}
+	}
+
+	return;
+}
+
 sub _check_colors {
-	my ($self, $key, $args_ar, $func) = @_;
+	my ($value, $key, $args_ar, $func) = @_;
 
 	foreach my $i (@{$args_ar}[0 .. 2]) {
 		if ($i !~ m/^\d+$/ms || $i > 255) {
 			err "Parameter '$key' has bad $func color (bad number).",
-				'Value', $self->{$key},
+				'Value', $value,
 			;
 		}
 	}
@@ -150,12 +158,12 @@ sub _check_colors {
 }
 
 sub _check_degree {
-	my ($self, $key, $args_ar, $func) = @_;
+	my ($value, $key, $args_ar, $func) = @_;
 
 	my $angle = $args_ar->[0];
 	if ($angle !~ m/^\d+$/ms || $angle > 360) {
 		err "Parameter '$key' has bad $func degree.",
-			'Value', $self->{$key},
+			'Value', $value,
 		;
 	}
 
@@ -173,7 +181,7 @@ sub _check_key {
 }
 
 sub _check_percent {
-	my ($self, $key, $args_ar, $func) = @_;
+	my ($value, $key, $args_ar, $func) = @_;
 
 	foreach my $i (@{$args_ar}[1 .. 2]) {
 
@@ -183,20 +191,20 @@ sub _check_percent {
 			my $p = $2;
 			if (! $p) {
 				err "Parameter '$key' has bad $func percent (missing %).",
-					'Value', $self->{$key},
+					'Value', $value,
 				;
 			}
 		# Check percent number.
 		} else {
 			err "Parameter '$key' has bad $func percent.",
-				'Value', $self->{$key},
+				'Value', $value,
 			;
 		}
 
 		# Check percent value.
 		if ($i > 100) {
 			err "Parameter '$key' has bad $func percent.",
-				'Value', $self->{$key},
+				'Value', $value,
 			;
 		}
 	}
