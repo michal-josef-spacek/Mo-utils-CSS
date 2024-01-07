@@ -7,14 +7,31 @@ use warnings;
 use Error::Pure qw(err);
 use Graphics::ColorNames::CSS;
 use List::Util 1.33 qw(none);
+use Mo::utils 0.06 qw(check_array);
 use Readonly;
 
-Readonly::Array our @EXPORT_OK => qw(check_css_class check_css_color check_css_unit);
+Readonly::Array our @EXPORT_OK => qw(check_array_css_color check_css_class check_css_color check_css_unit);
 Readonly::Array our @ABSOLUTE_LENGTHS => qw(cm mm in px pt pc);
 Readonly::Array our @RELATIVE_LENGTHS => qw(em ex ch rem vw vh vmin vmax %);
 Readonly::Array our @COLOR_FUNC => qw(rgb rgba hsl hsla);
 
 our $VERSION = 0.03;
+
+sub check_array_css_color {
+	my ($self, $key) = @_;
+
+	if (! exists $self->{$key}) {
+		return;
+	}
+
+	check_array($self, $key);
+
+	foreach my $css_color (@{$self->{$key}}) {
+		_check_color($css_color, $key);
+	}
+
+	return;
+}
 
 sub check_css_class {
 	my ($self, $key) = @_;
@@ -226,8 +243,9 @@ Mo::utils::CSS - Mo CSS utilities.
 
 =head1 SYNOPSIS
 
- use Mo::utils::CSS qw(check_css_class check_css_color check_css_unit);
+ use Mo::utils::CSS qw(check_array_css_color check_css_class check_css_color check_css_unit);
 
+ check_array_css_color($self, $key);
  check_css_class($self, $key);
  check_css_color($self, $key);
  check_css_unit($self, $key);
@@ -238,8 +256,16 @@ Mo utilities for checking of CSS style things.
 
 =head1 SUBROUTINES
 
+=head2 C<check_array_css_color>
+
+ check_array_css_color($self, $key);
+
+Check parameter defined by C<$key> which is reference to array.
+Check if all values are CSS colors.
 
 Put error if check isn't ok.
+
+Returns undef.
 
 =head2 C<check_css_class>
 
@@ -249,6 +275,7 @@ Check parameter defined by C<$key> if it's CSS class name.
 Value could be undefined.
 
 Put error if check isn't ok.
+
 Returns undef.
 
 =head2 C<check_css_color>
@@ -275,6 +302,17 @@ Returns undef.
 
 =head1 ERRORS
 
+ check_array_css_color():
+         Parameter '%s' has bad color name.
+                 Value: %s
+         Parameter '%s' has bad rgb color (bad hex number).
+                 Value: %s
+         Parameter '%s' has bad rgb color (bad length).
+                 Value: %s
+         Parameter '%s' must be a array.
+                 Value: %s
+                 Reference: %s
+
  check_css_class():
          Parameter '%s' has bad CSS class name.
                  Value: %s
@@ -297,6 +335,54 @@ Returns undef.
 
 =head1 EXAMPLE1
 
+=for comment filename=check_array_css_color_ok.pl
+
+ use strict;
+ use warnings;
+
+ use Mo::utils::CSS qw(check_array_css_color);
+
+ my $self = {
+         'key' => [
+                 'red',
+                 '#F00', '#FF0000', '#FF000000',
+                 'rgb(255,0,0)', 'rgba(255,0,0,0.3)',
+                 'hsl(120, 100%, 50%)', 'hsla(120, 100%, 50%, 0.3)',
+         ],
+ };
+ check_array_css_color($self, 'key');
+
+ # Print out.
+ print "ok\n";
+
+ # Output:
+ # ok
+
+=head1 EXAMPLE2
+
+=for comment filename=check_array_css_color_fail.pl
+
+ use strict;
+ use warnings;
+
+ use Error::Pure;
+ use Mo::utils::CSS qw(check_array_css_color);
+
+ $Error::Pure::TYPE = 'Error';
+
+ my $self = {
+         'key' => ['xxx'],
+ };
+ check_array_css_color($self, 'key');
+
+ # Print out.
+ print "ok\n";
+
+ # Output like:
+ # #Error [...utils.pm:?] Parameter 'key' has bad color name.
+
+=head1 EXAMPLE3
+
 =for comment filename=check_css_class_ok.pl
 
  use strict;
@@ -315,7 +401,7 @@ Returns undef.
  # Output:
  # ok
 
-=head1 EXAMPLE2
+=head1 EXAMPLE4
 
 =for comment filename=check_css_class_fail.pl
 
@@ -338,7 +424,7 @@ Returns undef.
  # Output like:
  # #Error [...utils.pm:?] Parameter 'key' has bad CSS class name (number of begin).
 
-=head1 EXAMPLE3
+=head1 EXAMPLE5
 
 =for comment filename=check_css_color_ok.pl
 
@@ -358,7 +444,7 @@ Returns undef.
  # Output:
  # ok
 
-=head1 EXAMPLE4
+=head1 EXAMPLE6
 
 =for comment filename=check_css_color_fail.pl
 
@@ -381,7 +467,7 @@ Returns undef.
  # Output like:
  # #Error [...utils.pm:?] Parameter 'key' has bad color name.
 
-=head1 EXAMPLE5
+=head1 EXAMPLE7
 
 =for comment filename=check_css_unit_ok.pl
 
@@ -401,7 +487,7 @@ Returns undef.
  # Output:
  # ok
 
-=head1 EXAMPLE6
+=head1 EXAMPLE8
 
 =for comment filename=check_css_unit_fail.pl
 
@@ -430,6 +516,7 @@ L<Error::Pure>,
 L<Exporter>,
 L<Graphics::ColorNames::CSS>,
 L<List::Util>,
+L<Mo::utils>,
 L<Readonly>.
 
 =head1 SEE ALSO

@@ -1,4 +1,5 @@
 0.03
+ - Add check_array_css_color().
  - Fix SYNOPSIS section in doc.
  - Improve subroutines doc.
  - Regen example file.
