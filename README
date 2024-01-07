@@ -18,6 +18,8 @@ SUBROUTINES
     Check parameter defined by $key if it's CSS class name. Value could be
     undefined.
 
+    Put error if check isn't ok.
+
     Returns undef.
 
   "check_css_color"
@@ -26,6 +28,8 @@ SUBROUTINES
     Check parameter defined by $key if it's CSS color. Value could be
     undefined.
 
+    Put error if check isn't ok.
+
     Returns undef.
 
   "check_css_unit"
@@ -33,6 +37,8 @@ SUBROUTINES
 
     Check parameter defined by $key if it's CSS unit. Value could be
     undefined.
+
+    Put error if check isn't ok.
 
     Returns undef.
 

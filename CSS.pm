@@ -238,6 +238,9 @@ Mo utilities for checking of CSS style things.
 
 =head1 SUBROUTINES
 
+
+Put error if check isn't ok.
+
 =head2 C<check_css_class>
 
  check_css_class($self, $key);
@@ -245,6 +248,7 @@ Mo utilities for checking of CSS style things.
 Check parameter defined by C<$key> if it's CSS class name.
 Value could be undefined.
 
+Put error if check isn't ok.
 Returns undef.
 
 =head2 C<check_css_color>
@@ -254,6 +258,8 @@ Returns undef.
 Check parameter defined by C<$key> if it's CSS color.
 Value could be undefined.
 
+Put error if check isn't ok.
+
 Returns undef.
 
 =head2 C<check_css_unit>
@@ -262,6 +268,8 @@ Returns undef.
 
 Check parameter defined by C<$key> if it's CSS unit.
 Value could be undefined.
+
+Put error if check isn't ok.
 
 Returns undef.
 
