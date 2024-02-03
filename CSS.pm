@@ -66,16 +66,22 @@ sub check_css_unit {
 
 	_check_key($self, $key) && return;
 
-	my ($num, $unit) = $self->{$key} =~ m/^(\d+)([^\d]*)$/ms;
+	my $value = $self->{$key};
+	my ($num, $unit) = $value =~ m/^(\d+)([^\d]*)$/ms;
 	if (! $num) {
-		err "Parameter '$key' doesn't contain number.";
+		err "Parameter '$key' doesn't contain number.",
+			'Value', $value,
+		;
 	}
 	if (! $unit) {
-		err "Parameter '$key' doesn't contain unit.";
+		err "Parameter '$key' doesn't contain unit.",
+			'Value', $value,
+		;
 	}
 	if (none { $_ eq $unit } (@ABSOLUTE_LENGTHS, @RELATIVE_LENGTHS)) {
 		err "Parameter '$key' contain bad unit.",
-			'Value', $unit,
+			'Unit', $unit,
+			'Value', $value,
 		;
 	}
 
@@ -299,6 +305,8 @@ Returns undef.
 
  check_css_unit($self, $key);
 
+I<Since version 0.01. Described functionality since version 0.04.>
+
 Check parameter defined by C<$key> if it's CSS unit.
 Value could be undefined.
 
@@ -335,8 +343,11 @@ Returns undef.
 
  check_css_unit():
          Parameter '%s' doesn't contain number.
+                 Value: %s
          Parameter '%s' doesn't contain unit.
+                 Value: %s
          Parameter '%s' contain bad unit.
+                 Unit: %s
                  Value: %s
 
 =head1 EXAMPLE1
