@@ -10,6 +10,23 @@ use Test::NoWarnings;
 
 # Test.
 my $self = {
+	'key' => [
+		'red',
+		'#F00', '#FF0000', '#FF000000',
+		'rgb(255,0,0)', 'rgba(255,0,0,0.3)',
+		'hsl(120, 100%, 50%)', 'hsla(120, 100%, 50%, 0.3)',
+	],
+};
+my $ret = check_array_css_color($self, 'key');
+is($ret, undef, 'Right structure.');
+
+# Test.
+$self = {};
+$ret = check_array_css_color($self, 'key');
+is($ret, undef, 'Right not exist key.');
+
+# Test.
+$self = {
 	'key' => 'foo',
 };
 eval {
@@ -34,20 +51,3 @@ is($EVAL_ERROR, "Parameter 'key' has bad color name.\n",
 $err_msg_hr = err_msg_hr();
 is($err_msg_hr->{'Value'}, 'foo', 'Test error parameter (Value: foo)');
 clean();
-
-# Test.
-$self = {
-	'key' => [
-		'red',
-		'#F00', '#FF0000', '#FF000000',
-		'rgb(255,0,0)', 'rgba(255,0,0,0.3)',
-		'hsl(120, 100%, 50%)', 'hsla(120, 100%, 50%, 0.3)',
-	],
-};
-my $ret = check_array_css_color($self, 'key');
-is($ret, undef, 'Right structure.');
-
-# Test.
-$self = {};
-$ret = check_array_css_color($self, 'key');
-is($ret, undef, 'Right not exist key.');

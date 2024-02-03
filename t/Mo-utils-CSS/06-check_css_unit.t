@@ -12,7 +12,29 @@ Readonly::Array our @RIGTH_UNITS => qw(123cm 123mm 123in 123px 123pt 123pc 123em
 	123ex 123ch 123rem 123vw 123vh 123vmin 123vmax 10%);
 
 # Test.
-my $self = {
+my ($ret, $self);
+foreach my $right_unit (@RIGTH_UNITS) {
+	$self = {
+		'key' => $right_unit,
+	};
+	$ret = check_css_unit($self, 'key');
+	is($ret, undef, 'Right CSS unit is present ('.$right_unit.').');
+}
+
+# Test.
+$self = {
+	'key' => undef,
+};
+$ret = check_css_unit($self, 'key');
+is($ret, undef, 'Right CSS unit is present (undef).');
+
+# Test.
+$self = {};
+$ret = check_css_unit($self, 'key');
+is($ret, undef, 'Right CSS unit is present (key is not exists).');
+
+# Test.
+$self = {
 	'key' => 'foo',
 };
 eval {
@@ -50,25 +72,3 @@ $err_msg_hr = err_msg_hr();
 is($err_msg_hr->{'Unit'}, 'xx', 'Test error parameter (Unit: xx).');
 is($err_msg_hr->{'Value'}, '123xx', 'Test error parameter (Value: 123xx).');
 clean();
-
-# Test.
-my $ret;
-foreach my $right_unit (@RIGTH_UNITS) {
-	$self = {
-		'key' => $right_unit,
-	};
-	$ret = check_css_unit($self, 'key');
-	is($ret, undef, 'Right CSS unit is present ('.$right_unit.').');
-}
-
-# Test.
-$self = {
-	'key' => undef,
-};
-$ret = check_css_unit($self, 'key');
-is($ret, undef, 'Right CSS unit is present (undef).');
-
-# Test.
-$self = {};
-$ret = check_css_unit($self, 'key');
-is($ret, undef, 'Right CSS unit is present (key is not exists).');

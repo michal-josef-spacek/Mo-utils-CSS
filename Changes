@@ -2,6 +2,8 @@
  - Add information about module version for checks in doc.
  - Add tests for error parameters.
  - Improve error variables in check_css_unit().
+ - Rewrite the tests so that the functional tests are first and then the
+   errors.
  - Sort test files.
 
 0.03 2024-01-07T23:09:07+01:00

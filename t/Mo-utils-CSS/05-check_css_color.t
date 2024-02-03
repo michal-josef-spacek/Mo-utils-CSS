@@ -16,7 +16,29 @@ Readonly::Array our @RIGTH_UNITS => (
 );
 
 # Test.
-my $self = {
+my ($ret, $self);
+foreach my $right_unit (@RIGTH_UNITS) {
+	$self = {
+		'key' => $right_unit,
+	};
+	$ret = check_css_color($self, 'key');
+	is($ret, undef, 'Right CSS color is present ('.$right_unit.').');
+}
+
+# Test.
+$self = {
+	'key' => undef,
+};
+$ret = check_css_color($self, 'key');
+is($ret, undef, 'Right CSS color is present (undef).');
+
+# Test.
+$self = {};
+$ret = check_css_color($self, 'key');
+is($ret, undef, 'Right CSS color is present (key is not exists).');
+
+# Test.
+$self = {
 	'key' => 'xxx',
 };
 eval {
@@ -347,25 +369,3 @@ $err_msg_hr = err_msg_hr();
 is($err_msg_hr->{'Value'}, 'hsla(120,100%,50%,bad)',
 	'Test error parameter (Value: hsla(120,100%,50%,bad)).');
 clean();
-
-# Test.
-my $ret;
-foreach my $right_unit (@RIGTH_UNITS) {
-	$self = {
-		'key' => $right_unit,
-	};
-	$ret = check_css_color($self, 'key');
-	is($ret, undef, 'Right CSS color is present ('.$right_unit.').');
-}
-
-# Test.
-$self = {
-	'key' => undef,
-};
-$ret = check_css_color($self, 'key');
-is($ret, undef, 'Right CSS color is present (undef).');
-
-# Test.
-$self = {};
-$ret = check_css_color($self, 'key');
-is($ret, undef, 'Right CSS color is present (key is not exists).');
