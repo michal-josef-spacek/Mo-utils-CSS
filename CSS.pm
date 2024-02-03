@@ -260,6 +260,8 @@ Mo utilities for checking of CSS style things.
 
  check_array_css_color($self, $key);
 
+I<Since version 0.03.>
+
 Check parameter defined by C<$key> which is reference to array.
 Check if all values are CSS colors.
 
@@ -271,6 +273,8 @@ Returns undef.
 
  check_css_class($self, $key);
 
+I<Since version 0.02.>
+
 Check parameter defined by C<$key> if it's CSS class name.
 Value could be undefined.
 
@@ -281,6 +285,8 @@ Returns undef.
 =head2 C<check_css_color>
 
  check_css_color($self, $key);
+
+I<Since version 0.03.>
 
 Check parameter defined by C<$key> if it's CSS color.
 Value could be undefined.

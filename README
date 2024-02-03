@@ -16,6 +16,8 @@ SUBROUTINES
   "check_array_css_color"
      check_array_css_color($self, $key);
 
+    *Since version 0.03.*
+
     Check parameter defined by $key which is reference to array. Check if
     all values are CSS colors.
 
@@ -26,6 +28,8 @@ SUBROUTINES
   "check_css_class"
      check_css_class($self, $key);
 
+    *Since version 0.02.*
+
     Check parameter defined by $key if it's CSS class name. Value could be
     undefined.
 
@@ -35,6 +39,8 @@ SUBROUTINES
 
   "check_css_color"
      check_css_color($self, $key);
+
+    *Since version 0.03.*
 
     Check parameter defined by $key if it's CSS color. Value could be
     undefined.
