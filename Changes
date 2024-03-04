@@ -1,4 +1,5 @@
 0.05
+ - Fix variable names and test messages in check_css_class() tests.
 
 0.04 2024-02-03T10:39:58+01:00
  - Add information about module version for checks in doc.
