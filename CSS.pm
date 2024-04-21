@@ -67,7 +67,7 @@ sub check_css_unit {
 	_check_key($self, $key) && return;
 
 	my $value = $self->{$key};
-	my ($num, $unit) = $value =~ m/^(\d+)([^\d]*)$/ms;
+	my ($num, $unit) = $value =~ m/^(\d*\.?\d+)([^\d]*)$/ms;
 	if (! $num) {
 		err "Parameter '$key' doesn't contain number.",
 			'Value', $value,
