@@ -67,7 +67,7 @@ sub check_css_border {
 				'Value', $self->{$key},
 			;
 		}
-	} elsif (@parts == 3) {
+	} else {
 		if (none { $parts[0] eq $_ } @BORDER_WIDTHS) {
 			_check_unit($parts[0], $key, $self->{$key});
 		}
@@ -118,10 +118,6 @@ sub check_css_unit {
 
 sub _check_alpha {
 	my ($value, $key, $args_ar, $func, $error_value) = @_;
-
-	if (! defined $error_value) {
-		$error_value = $value;
-	}
 
 	my $alpha = $args_ar->[3];
 	if ($alpha !~ m/^[\d\.]+$/ms || $alpha > 1) {
@@ -221,10 +217,6 @@ sub _check_color {
 sub _check_colors {
 	my ($value, $key, $args_ar, $func, $error_value) = @_;
 
-	if (! defined $error_value) {
-		$error_value = $value;
-	}
-
 	foreach my $i (@{$args_ar}[0 .. 2]) {
 		if ($i !~ m/^\d+$/ms || $i > 255) {
 			err "Parameter '$key' has bad $func color (bad number).",
@@ -238,10 +230,6 @@ sub _check_colors {
 
 sub _check_degree {
 	my ($value, $key, $args_ar, $func, $error_value) = @_;
-
-	if (! defined $error_value) {
-		$error_value = $value;
-	}
 
 	my $angle = $args_ar->[0];
 	if ($angle !~ m/^\d+$/ms || $angle > 360) {
@@ -265,10 +253,6 @@ sub _check_key {
 
 sub _check_percent {
 	my ($value, $key, $args_ar, $func, $error_value) = @_;
-
-	if (! defined $error_value) {
-		$error_value = $value;
-	}
 
 	foreach my $i (@{$args_ar}[1 .. 2]) {
 
