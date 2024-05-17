@@ -1,6 +1,7 @@
 TODO
 ====
 5. Check for CSS border-width definition?
+   border-width cover another situation than simple border. Like border-width: 1em 2em;
 7.
 
 Applied
