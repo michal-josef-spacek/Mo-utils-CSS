@@ -54,7 +54,7 @@ sub check_css_border {
 
 		# Border style on first place.
 		if (any { $parts[0] eq $_ } @BORDER_STYLES) {
-			_check_color($parts[1], $key);
+			_check_color($parts[1], $key, $self->{$key});
 
 		# Border style on second place.
 		} elsif (any { $parts[1] eq $_ } @BORDER_STYLES) {
@@ -72,7 +72,7 @@ sub check_css_border {
 			_check_unit($parts[0], $key, $self->{$key});
 		}
 		_check_border_style($parts[1], $key, $self->{$key});
-		_check_color($parts[2], $key);
+		_check_color($parts[2], $key, $self->{$key});
 	} else {
 		err "Parameter '$key' has bad number of fields in definition.",
 			'Value', $self->{$key},
