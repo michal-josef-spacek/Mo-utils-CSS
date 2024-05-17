@@ -312,12 +312,12 @@ sub _check_unit {
 
 	my ($num, $unit) = $value =~ m/^(\d*\.?\d+)([^\d]*)$/ms;
 	if (! $num) {
-		err "Parameter '$key' doesn't contain number.",
+		err "Parameter '$key' doesn't contain unit number.",
 			'Value', $error_value,
 		;
 	}
 	if (! $unit) {
-		err "Parameter '$key' doesn't contain unit.",
+		err "Parameter '$key' doesn't contain unit name.",
 			'Value', $error_value,
 		;
 	}
@@ -441,9 +441,9 @@ Returns undef.
          Parameter '%s' contain bad unit.
                  Unit: %s
                  Value: %s
-         Parameter '%s' doesn't contain number.
+         Parameter '%s' doesn't contain unit name.
                  Value: %s
-         Parameter '%s' doesn't contain unit.
+         Parameter '%s' doesn't contain unit number.
                  Value: %s
          Parameter '%s' has bad rgb color (bad hex number).
                  Value: %s
@@ -474,9 +474,9 @@ Returns undef.
                  Value: %s
 
  check_css_unit():
-         Parameter '%s' doesn't contain number.
+         Parameter '%s' doesn't contain unit name.
                  Value: %s
-         Parameter '%s' doesn't contain unit.
+         Parameter '%s' doesn't contain unit number.
                  Value: %s
          Parameter '%s' contain bad unit.
                  Unit: %s
@@ -700,7 +700,7 @@ Returns undef.
  print "ok\n";
 
  # Output like:
- # #Error [...utils.pm:?] Parameter 'key' doesn't contain unit.
+ # #Error [...utils.pm:?] Parameter 'key' doesn't contain unit name.
 
 =head1 DEPENDENCIES
 

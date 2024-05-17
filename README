@@ -90,9 +90,9 @@ ERRORS
              Parameter '%s' contain bad unit.
                      Unit: %s
                      Value: %s
-             Parameter '%s' doesn't contain number.
+             Parameter '%s' doesn't contain unit name.
                      Value: %s
-             Parameter '%s' doesn't contain unit.
+             Parameter '%s' doesn't contain unit number.
                      Value: %s
              Parameter '%s' has bad rgb color (bad hex number).
                      Value: %s
@@ -123,9 +123,9 @@ ERRORS
                      Value: %s
 
      check_css_unit():
-             Parameter '%s' doesn't contain number.
+             Parameter '%s' doesn't contain unit name.
                      Value: %s
-             Parameter '%s' doesn't contain unit.
+             Parameter '%s' doesn't contain unit number.
                      Value: %s
              Parameter '%s' contain bad unit.
                      Unit: %s
@@ -319,7 +319,7 @@ EXAMPLE10
      print "ok\n";
 
      # Output like:
-     # #Error [...utils.pm:?] Parameter 'key' doesn't contain unit.
+     # #Error [...utils.pm:?] Parameter 'key' doesn't contain unit name.
 
 DEPENDENCIES
     Error::Pure, Exporter, Graphics::ColorNames::CSS, List::Util, Mo::utils,

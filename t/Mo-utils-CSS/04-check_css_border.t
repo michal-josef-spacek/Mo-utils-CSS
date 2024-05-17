@@ -98,8 +98,8 @@ $self = {
 eval {
 	check_css_border($self, 'key');
 };
-is($EVAL_ERROR, "Parameter 'key' doesn't contain number.\n",
-	"Parameter 'key' doesn't contain number (px solid).");
+is($EVAL_ERROR, "Parameter 'key' doesn't contain unit number.\n",
+	"Parameter 'key' doesn't contain unit number (px solid).");
 $err_msg_hr = err_msg_hr();
 is($err_msg_hr->{'Value'}, 'px solid',
 	'Test error parameter (Value: px solid).');
