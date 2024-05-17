@@ -474,12 +474,12 @@ Returns undef.
                  Value: %s
 
  check_css_unit():
+         Parameter '%s' contain bad unit.
+                 Unit: %s
+                 Value: %s
          Parameter '%s' doesn't contain unit name.
                  Value: %s
          Parameter '%s' doesn't contain unit number.
-                 Value: %s
-         Parameter '%s' contain bad unit.
-                 Unit: %s
                  Value: %s
 
 =head1 EXAMPLE1
