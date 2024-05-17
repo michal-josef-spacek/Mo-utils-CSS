@@ -1,6 +1,5 @@
 TODO
 ====
-4. Check for CSS border definition?
 5. Check for CSS border-width definition?
 6.
 
@@ -14,3 +13,6 @@ OK [20240107] skim
 
 3. Test parameters in error messages.
 OK [20240203] skim
+
+4. Check for CSS border definition?
+OK [20240517] skim
