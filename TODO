@@ -1,8 +1,6 @@
 TODO
 ====
 5. Check for CSS border-width definition?
-6. Rewrite t/04-check_css_border.t to use %BAD_BORDERS, which are defined by
-   case and error message.
 7.
 
 Applied
@@ -17,4 +15,8 @@ OK [20240107] skim
 OK [20240203] skim
 
 4. Check for CSS border definition?
+OK [20240517] skim
+
+6. Rewrite t/04-check_css_border.t to use %BAD_BORDERS, which are defined by
+   case and error message.
 OK [20240517] skim

@@ -27,6 +27,12 @@ Readonly::Array our @RIGTH_BORDERS => (
 	'1em double #00ff00',
 	'1rem double rgb(255,0,0)',
 );
+Readonly::Hash our %BAD_BORDERS => (
+	'0.3em 0 9px solid red' => "Parameter 'key' has bad number of fields in definition.",
+	'2px red' => "Parameter 'key' hasn't border style.",
+	'bad' => "Parameter 'key' has bad border style.",
+	'px solid' => "Parameter 'key' doesn't contain unit number.",
+);
 
 # Test.
 my ($ret, $self);
@@ -51,56 +57,16 @@ $ret = check_css_border($self, 'key');
 is($ret, undef, 'Right CSS border is present (key is not exists).');
 
 # Test.
-$self = {
-	'key' => '2px red',
-};
-eval {
-	check_css_border($self, 'key');
-};
-is($EVAL_ERROR, "Parameter 'key' hasn't border style.\n",
-	"Parameter 'key' hasn't border style.");
-my $err_msg_hr = err_msg_hr();
-is($err_msg_hr->{'Value'}, '2px red', 'Test error parameter (Value: 2px red).');
-clean();
-
-# Test.
-$self = {
-	'key' => '0.3em 0 9px solid red',
-};
-eval {
-	check_css_border($self, 'key');
-};
-is($EVAL_ERROR, "Parameter 'key' has bad number of fields in definition.\n",
-	"Parameter 'key' has bad number of fields in definition (0.3em 0 9px solid red).");
-$err_msg_hr = err_msg_hr();
-is($err_msg_hr->{'Value'}, '0.3em 0 9px solid red',
-	'Test error parameter (Value: 0.3em 0 9px solid red).');
-clean();
-
-# Test.
-$self = {
-	'key' => 'bad',
-};
-eval {
-	check_css_border($self, 'key');
-};
-is($EVAL_ERROR, "Parameter 'key' has bad border style.\n",
-	"Parameter 'key' has bad border style (bad).");
-$err_msg_hr = err_msg_hr();
-is($err_msg_hr->{'Value'}, 'bad',
-	'Test error parameter (Value: bad).');
-clean();
-
-# Test.
-$self = {
-	'key' => 'px solid',
-};
-eval {
-	check_css_border($self, 'key');
-};
-is($EVAL_ERROR, "Parameter 'key' doesn't contain unit number.\n",
-	"Parameter 'key' doesn't contain unit number (px solid).");
-$err_msg_hr = err_msg_hr();
-is($err_msg_hr->{'Value'}, 'px solid',
-	'Test error parameter (Value: px solid).');
-clean();
+foreach my $bad_border (keys %BAD_BORDERS) {
+	$self = {
+		'key' => $bad_border,
+	};
+	eval {
+		check_css_border($self, 'key');
+	};
+	is($EVAL_ERROR, $BAD_BORDERS{$bad_border}."\n",
+		$BAD_BORDERS{$bad_border}." Value is '$bad_border'.");
+	my $err_msg_hr = err_msg_hr();
+	is($err_msg_hr->{'Value'}, $bad_border, 'Test error parameter (Value: '.$bad_border.').');
+	clean();
+}
