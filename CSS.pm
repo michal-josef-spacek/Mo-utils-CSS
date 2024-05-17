@@ -47,7 +47,7 @@ sub check_css_border {
 		return;
 	}
 
-	my @parts = split m/\s+/ms, $self->{$key};
+	my @parts = split m/\s+/ms, $self->{$key}, 3;
 	if (@parts == 1) {
 		_check_border_style($self->{$key}, $key);
 	} elsif (@parts == 2) {
@@ -73,10 +73,6 @@ sub check_css_border {
 		}
 		_check_border_style($parts[1], $key, $self->{$key});
 		_check_color($parts[2], $key, $self->{$key});
-	} else {
-		err "Parameter '$key' has bad number of fields in definition.",
-			'Value', $self->{$key},
-		;
 	}
 
 	return;
@@ -450,8 +446,6 @@ Returns undef.
          Parameter '%s' has bad rgb color (bad length).
                  Value: %s
          Parameter '%s' has bad color name.
-                 Value: %s
-         Parameter '%s' has bad number of fields in definition.
                  Value: %s
          Parameter '%s' hasn't border style.
                  Value: %s

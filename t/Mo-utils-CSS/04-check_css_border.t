@@ -28,8 +28,8 @@ Readonly::Array our @RIGTH_BORDERS => (
 	'1rem double rgb(255,0,0)',
 );
 Readonly::Hash our %BAD_BORDERS => (
-	'0.3em 0 9px solid red' => "Parameter 'key' has bad number of fields in definition.",
 	'2px red' => "Parameter 'key' hasn't border style.",
+	'0.3em 0 9px solid red' => "Parameter 'key' has bad border style.",
 	'bad' => "Parameter 'key' has bad border style.",
 	'px solid' => "Parameter 'key' doesn't contain unit number.",
 );

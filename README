@@ -100,8 +100,6 @@ ERRORS
                      Value: %s
              Parameter '%s' has bad color name.
                      Value: %s
-             Parameter '%s' has bad number of fields in definition.
-                     Value: %s
              Parameter '%s' hasn't border style.
                      Value: %s
              Parameter '%s' must be a array.
