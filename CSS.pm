@@ -395,7 +395,7 @@ Returns undef.
 
  check_css_unit($self, $key);
 
-I<Since version 0.01. Described functionality since version 0.06.>
+I<Since version 0.01. Described functionality since version 0.07.>
 
 Check parameter defined by C<$key> if it's CSS unit.
 Value could be undefined.

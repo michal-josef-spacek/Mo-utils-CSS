@@ -65,7 +65,7 @@ SUBROUTINES
   "check_css_unit"
      check_css_unit($self, $key);
 
-    *Since version 0.01. Described functionality since version 0.06.*
+    *Since version 0.01. Described functionality since version 0.07.*
 
     Check parameter defined by $key if it's CSS unit. Value could be
     undefined.
