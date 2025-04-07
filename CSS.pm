@@ -192,6 +192,7 @@ sub _check_color {
 			}
 			_check_degree($args[0], $key, $func, $error_value);
 			_check_percent([@args[1 .. 2]], $key, $func, $error_value);
+		# hsla
 		} else {
 			if (@args != 4) {
 				err "Parameter '$key' has bad hsla color (bad number of arguments).",
