@@ -4,7 +4,9 @@ TODO
    border-width cover another situation than simple border. Like border-width: 1em 2em;
 7. Better error for percent > 100?
    has percent value outside of 0-100 range.
-8.
+8. Rewrite to Mo::utils::Number::Utils::check_percent() which is fixing decimal
+   number in percent.
+9.
 
 Applied
 =======
