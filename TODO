@@ -2,7 +2,9 @@ TODO
 ====
 5. Check for CSS border-width definition?
    border-width cover another situation than simple border. Like border-width: 1em 2em;
-7.
+7. Better error for percent > 100?
+   has percent value outside of 0-100 range.
+8.
 
 Applied
 =======
