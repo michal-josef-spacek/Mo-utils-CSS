@@ -1,4 +1,5 @@
 0.09
+ - Add tests for check_css_border().
  - Simplify internal code.
  - Update copyright years.
 
