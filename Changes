@@ -1,4 +1,4 @@
-0.09
+0.09 2025-04-07T16:34:03+02:00
  - Add tests for check_css_border().
  - Fix ERRORS section in doc.
  - Remove unused module from tests.
