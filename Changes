@@ -1,5 +1,6 @@
 0.09
  - Add tests for check_css_border().
+ - Fix ERRORS section in doc.
  - Simplify internal code.
  - Update copyright years.
 
