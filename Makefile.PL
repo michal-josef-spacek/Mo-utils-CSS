@@ -23,6 +23,7 @@ requires 'Exporter' => 0;
 requires 'Graphics::ColorNames::CSS' => 0;
 requires 'List::Util' => 1.33;
 requires 'Mo::utils' => 0.06;
+requires 'Mo::utils::Number::Utils' => 0;
 requires 'Readonly' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Mo-utils-CSS/issues',
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Mo-utils-CSS';

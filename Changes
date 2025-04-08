@@ -1,4 +1,6 @@
 0.10
+ - Rewrite to use of Mo::utils::Number::Utils::sub_check_percent() and fix
+   decimal percent.
 
 0.09 2025-04-07T16:34:03+02:00
  - Add tests for check_css_border().

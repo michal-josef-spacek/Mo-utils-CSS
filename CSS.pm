@@ -8,6 +8,7 @@ use Error::Pure qw(err);
 use Graphics::ColorNames::CSS;
 use List::Util 1.33 qw(any none);
 use Mo::utils 0.06 qw(check_array);
+use Mo::utils::Number::Utils qw(sub_check_percent);
 use Readonly;
 
 Readonly::Array our @EXPORT_OK => qw(check_array_css_color check_css_border
@@ -191,7 +192,7 @@ sub _check_color {
 				;
 			}
 			_check_degree($args[0], $key, $func, $error_value);
-			_check_percent([@args[1 .. 2]], $key, $func, $error_value);
+			_check_percent([@args[1 .. 2]], $key, $func.' percent', $error_value);
 		# hsla
 		} else {
 			if (@args != 4) {
@@ -200,7 +201,7 @@ sub _check_color {
 				;
 			}
 			_check_degree($args[0], $key, $func, $error_value);
-			_check_percent([@args[1 .. 2]], $key, $func, $error_value);
+			_check_percent([@args[1 .. 2]], $key, $func.' percent', $error_value);
 			_check_alpha($args[3], $key, $func, $error_value);
 		}
 	} else {
@@ -254,29 +255,7 @@ sub _check_percent {
 	my ($value_ar, $key, $func, $error_value) = @_;
 
 	foreach my $i (@{$value_ar}) {
-
-		# Check percent sign.
-		if ($i =~ m/^(\d+)(\%)?$/ms) {
-			$i = $1;
-			my $p = $2;
-			if (! $p) {
-				err "Parameter '$key' has bad $func percent (missing %).",
-					'Value', $error_value,
-				;
-			}
-		# Check percent number.
-		} else {
-			err "Parameter '$key' has bad $func percent.",
-				'Value', $error_value,
-			;
-		}
-
-		# Check percent value.
-		if ($i > 100) {
-			err "Parameter '$key' has bad $func percent.",
-				'Value', $error_value,
-			;
-		}
+		sub_check_percent($i, $key, $func, $error_value);
 	}
 
 	return;
