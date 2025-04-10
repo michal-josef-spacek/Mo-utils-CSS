@@ -405,7 +405,7 @@ EXAMPLE10
 
 DEPENDENCIES
     Error::Pure, Exporter, Graphics::ColorNames::CSS, List::Util, Mo::utils,
-    Readonly.
+    Mo::utils::Number::Utils, Readonly.
 
 SEE ALSO
     Mo  Micro Objects. Mo is less.

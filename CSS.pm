@@ -749,6 +749,7 @@ L<Exporter>,
 L<Graphics::ColorNames::CSS>,
 L<List::Util>,
 L<Mo::utils>,
+L<Mo::utils::Number::Utils>,
 L<Readonly>.
 
 =head1 SEE ALSO
