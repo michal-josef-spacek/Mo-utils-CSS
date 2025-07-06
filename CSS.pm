@@ -20,7 +20,7 @@ Readonly::Array our @BORDER_WIDTHS => qw(thin medium thick);
 Readonly::Array our @RELATIVE_LENGTHS => qw(em ex ch rem vw vh vmin vmax %);
 Readonly::Array our @COLOR_FUNC => qw(rgb rgba hsl hsla);
 
-our $VERSION = 0.12;
+our $VERSION = 0.13;
 
 sub check_array_css_color {
 	my ($self, $key) = @_;
@@ -792,6 +792,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.12
+0.13
 
 =cut
