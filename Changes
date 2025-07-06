@@ -1,4 +1,5 @@
 0.12
+ - Update to Mo::utils@0.31 check_array().
 
 0.11 2025-06-27T20:21:17+02:00
  - Fix DEPEDENCIES section in doc.
