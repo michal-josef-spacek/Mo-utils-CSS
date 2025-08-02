@@ -7,7 +7,7 @@ use warnings;
 use Error::Pure qw(err);
 use Graphics::ColorNames::CSS;
 use List::Util 1.33 qw(any none);
-use Mo::utils 0.31 qw(check_array);
+use Mo::utils::Array qw(check_array);
 use Mo::utils::Number::Utils qw(sub_check_percent);
 use Readonly;
 
@@ -748,7 +748,7 @@ L<Error::Pure>,
 L<Exporter>,
 L<Graphics::ColorNames::CSS>,
 L<List::Util>,
-L<Mo::utils>,
+L<Mo::utils::Array>,
 L<Mo::utils::Number::Utils>,
 L<Readonly>.
 
